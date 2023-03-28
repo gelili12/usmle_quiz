@@ -36,5 +36,35 @@ function checkAnswer(option) {
         answer.textContent = "Incorrect! The correct answer is " + data[currentQuestion].answer;
     }
 }
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
+
+async function loadData() {
+    // ... (existing loadData() function content) ...
+    shuffleArray(data);
+    displayQuestion();
+}
+
+function nextQuestion() {
+    if (currentQuestion < data.length - 1) {
+        currentQuestion++;
+        displayQuestion();
+        const answer = document.getElementById("answer");
+        answer.textContent = "";
+        document.getElementById("next").style.display = "none";
+    } else {
+        document.getElementById("answer").textContent = "No more questions!";
+        document.getElementById("next").style.display = "none";
+    }
+}
+
+function checkAnswer(option) {
+    // ... (existing checkAnswer() function content) ...
+    document.getElementById("next").style.display = "block";
+}
 
 loadData();
