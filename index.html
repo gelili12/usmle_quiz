@@ -7,17 +7,10 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="quiz-container">
-        <div id="question" class="question"></div>
-        <div class="options">
-            <button id="A" class="option" onclick="checkAnswer('A')">A</button>
-            <button id="B" class="option" onclick="checkAnswer('B')">B</button>
-            <button id="C" class="option" onclick="checkAnswer('C')">C</button>
-            <button id="D" class="option" onclick="checkAnswer('D')">D</button>
-        </div>
-        <div id="answer" class="answer"></div>
-        <button id="next" class="next" onclick="nextQuestion()" style="display:none">Next</button>
-    </div>
+    <div class="question" id="question"></div>
+    <div class="options" id="options"></div>
+    <div class="answer" id="answer"></div>
+    <button class="next" id="next" onclick="nextQuestion()" style="display:none;">Next</button>
     <script src="script.js"></script>
 </body>
 </html>
