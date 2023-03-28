@@ -39,14 +39,21 @@ function checkAnswer(selectedOption) {
 
     let answerText = "";
     if (selectedOption === correctOption) {
-        answerText = "Correct!";
+        answerText = `Correct! The answer is: ${correctOption}. ${questionData.answer}`;
     } else {
         answerText = `Incorrect. The correct answer is: ${correctOption}. ${questionData.answer}`;
     }
 
     document.getElementById("answer").textContent = answerText;
     document.getElementById("next").style.display = "block";
+
+    // Disable the option buttons after checking the answer
+    const optionButtons = document.getElementsByClassName("option");
+    for (let i = 0; i < optionButtons.length; i++) {
+        optionButtons[i].disabled = true;
+    }
 }
+
 
 function nextQuestion() {
     if (currentQuestion < data.length - 1) {
