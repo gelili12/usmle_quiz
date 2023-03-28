@@ -40,3 +40,16 @@ body {
     color: green;
     margin-top: 20px;
 }
+.next {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.next:hover {
+    background-color: #45a049;
+}
+
