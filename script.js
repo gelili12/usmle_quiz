@@ -42,10 +42,24 @@ function shuffleArray(array) {
         [array[i], array[j]] = [array[j], array[i]];
     }
 }
+const numberOfQuestionsToLoad = 20;
 
 async function loadData() {
-    // ... (existing loadData() function content) ...
-    shuffleArray(data);
+    const response = await fetch("questions.jsonl");
+    const text = await response.text();
+    const lines = text.split("\n").filter(line => line.trim() !== "");
+
+    const allData = [];
+    for (const line of lines) {
+        allData.push(JSON.parse(line));
+    }
+
+    shuffleArray(allData);
+
+    for (let i = 0; i < numberOfQuestionsToLoad; i++) {
+        data.push(allData[i]);
+    }
+
     displayQuestion();
 }
 
