@@ -27,15 +27,27 @@ function displayQuestion() {
     optionC.textContent = data[currentQuestion].options.C;
     optionD.textContent = data[currentQuestion].options.D;
 }
+function checkAnswer(selectedOption) {
+    const questionData = data[currentQuestion];
+    const correctOption = questionData.answer_idx;
 
-function checkAnswer(option) {
-    const answer = document.getElementById("answer");
-    if (option === data[currentQuestion].answer_idx) {
-        answer.textContent = "Correct! The answer is " + data[currentQuestion].answer;
+    let answerText = "";
+    if (selectedOption === correctOption) {
+        answerText = "Correct!";
     } else {
-        answer.textContent = "Incorrect! The correct answer is " + data[currentQuestion].answer;
+        answerText = `Incorrect. The correct answer is: ${correctOption}. ${questionData.answer}`;
+    }
+
+    document.getElementById("answer").textContent = answerText;
+    document.getElementById("next").style.display = "block";
+
+    // Disable the option buttons after checking the answer
+    const optionButtons = document.getElementsByClassName("option");
+    for (let i = 0; i < optionButtons.length; i++) {
+        optionButtons[i].disabled = true;
     }
 }
+
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
